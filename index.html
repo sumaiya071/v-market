@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F5F6FA;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Subtle background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 20%, rgba(196,30,58,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 80% 80%, rgba(22,163,74,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .splash {
+      text-align: center;
+      animation: fadeIn 0.6s ease both;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      width: 52px; height: 52px;
+      background: #C41E3A;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(196,30,58,0.3);
+      animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.2s both;
+    }
+
+    .logo-text {
+      font-size: 36px;
+      font-weight: 800;
+      color: #1A1A2E;
+      letter-spacing: -1px;
+      animation: slideRight 0.5s ease 0.3s both;
+    }
+
+    .logo-text span { color: #C41E3A; }
+
+    /* Tagline */
+    .tagline {
+      font-size: 16px;
+      color: #6B7280;
+      font-weight: 400;
+      margin-bottom: 48px;
+      animation: fadeIn 0.5s ease 0.5s both;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      width: 280px;
+      margin: 0 auto 32px;
+      animation: fadeIn 0.5s ease 0.6s both;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #9CA3AF;
+      font-weight: 500;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      background: #E5E7EB;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #C41E3A, #16A34A);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #16A34A;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.35);
+      transition: all 0.2s ease;
+      animation: fadeIn 0.5s ease 0.7s both;
+    }
+
+    .cta-btn:hover {
+      background: #15803D;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.4);
+    }
+
+    .cta-btn:active { transform: translateY(0); }
+
+    .skip-link {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #9CA3AF;
+      cursor: pointer;
+      animation: fadeIn 0.5s ease 0.8s both;
+      transition: color 0.2s;
+    }
+    .skip-link:hover { color: #6B7280; }
+
+    /* Stats strip */
+    .stats-strip {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid #E5E7EB;
+      animation: fadeIn 0.5s ease 0.9s both;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1A1A2E;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #9CA3AF;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="splash">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <div class="logo-mark">
+        <svg width="26" height="26" viewBox="0 0 18 18" fill="none">
+          <rect x="1"  y="10" width="4" height="7" rx="1" fill="white"/>
+          <rect x="7"  y="5"  width="4" height="12" rx="1" fill="white"/>
+          <rect x="13" y="1"  width="4" height="16" rx="1" fill="white"/>
+        </svg>
+      </div>
+      <span class="logo-text"><span>V</span> Market</span>
+    </div>
+
+    <p class="tagline">Inventory & Transfer Management Platform</p>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="loadingText">Loading dashboard…</span>
+        <span id="pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <a href="dashboard.html" class="cta-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      View Dashboard
+    </a>
+
+    <span class="skip-link" onclick="window.location.href='dashboard.html'">
+      Redirecting automatically in <span id="countdown">3</span>s — click to skip
+    </span>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-value">1,500</div>
+        <div class="stat-label">Total Units</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">18</div>
+        <div class="stat-label">Transfer Opportunities</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">₹9,920</div>
+        <div class="stat-label">Value Saved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">7</div>
+        <div class="stat-label">Active Requests</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const bar  = document.getElementById('progressBar');
+    const pct  = document.getElementById('pct');
+    const cdEl = document.getElementById('countdown');
+    const msg  = document.getElementById('loadingText');
+
+    const steps = [
+      { at: 500,  to: 30,  text: 'Fetching inventory…' },
+      { at: 1000, to: 60,  text: 'Loading transfers…' },
+      { at: 1800, to: 85,  text: 'Almost ready…' },
+      { at: 2400, to: 100, text: 'Done!' },
+    ];
+
+    steps.forEach(s => {
+      setTimeout(() => {
+        bar.style.width = s.to + '%';
+        pct.textContent  = s.to + '%';
+        msg.textContent  = s.text;
+      }, s.at);
+    });
+
+    // Countdown
+    let secs = 3;
+    const tick = setInterval(() => {
+      secs--;
+      cdEl.textContent = secs;
+      if (secs <= 0) {
+        clearInterval(tick);
+        window.location.href = 'dashboard.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
